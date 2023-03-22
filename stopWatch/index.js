@@ -15,7 +15,7 @@ let sec = 0;
 startBtn.addEventListener("click", () => {
   if (paused) {
     paused = false;
-    startTime = Date.noew() - elapsedTime;
+    startTime = Date.now() - elapsedTime;
     intervalId = setInterval(updateTime, 1000);
   }
 });
@@ -28,31 +28,27 @@ pauseBtn.addEventListener("click", () => {
 });
 resetBtn.addEventListener("click", () => {
   paused = true;
-  clearInterval = 0;
+  clearInterval(intervalId);
   startTime = 0;
   elapsedTime = 0;
   currentTime = 0;
   hrs = 0;
   mins = 0;
   sec = 0;
-
-  timeDisplay.textContent = "00:00:00";
+  
+  updateTime();
 });
 
 function updateTime() {
   elapsedTime = Date.now() - startTime;
 
   sec = Math.floor((elapsedTime / 1000) % 60);
-  sec = Math.floor(((elapsedTime / 1000) * 60) % 60);
-  hr = Math.floor(((elapsedTime / 1000) * 60 * 60) % 60);
+  mins = Math.floor(((elapsedTime / 1000) * 60) % 60);
+  hrs = Math.floor(elapsedTime / (1000 * 60 * 60));
 
-  sec = pad(sec);
-  mins = pad(mins);
-  hr = pad(hr);
+  timeDisplay.textContent = `${pad(hrs)}:${pad(mins)}:${pad(sec)}`;
+}
 
-  timeDisplay.textContent = `${hrs}:${mins}:${sec}`;
-
-  function pad(unit) {
-    return "0" + unit.length > 2 ? unit : "0" + unit;
-  }
+function pad(num) {
+  return num.toString().padStart(2, "0");
 }
