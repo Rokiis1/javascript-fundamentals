@@ -1,0 +1,49 @@
+/* Style for the game buttons */
+.selections {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+  }
+  
+  .selection {
+    font-size: 5em;
+    margin: 0 20px;
+    padding: 20px;
+    border-radius: 50%;
+    background-color: #f5f5f5;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .selection:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Style for the game results */
+  .results {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    font-size: 2em;
+  }
+  
+  .result-score {
+    font-weight: bold;
+    margin-left: 10px;
+  }
+  
+  /* Style for the result selections */
+  .result-selection {
+    margin-top: 20px;
+    font-size: 5em;
+  }
+  
+  .winner {
+    color: green;
+  }
+  
+  [data-final-column] {
+    text-align: right;
+  }
+  
